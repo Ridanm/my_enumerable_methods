@@ -87,12 +87,19 @@ module MyEnumerable
 end 
 
 class Array
-
   include Enumerable 
   include MyEnumerable
-
 end
 
+puts 'Enumerator mode for my_inject: '
 numbers = [1, 2, 3, 4, 5]
+each_element = numbers.my_inject
 
-p numbers.my_inject
+indx = 0
+all_elements = each_element.count
+all_elements.times do 
+  puts "Index: #{indx} Element: #{each_element.next[1]}"
+  indx += 1
+  exit if indx == all_elements
+end
+
